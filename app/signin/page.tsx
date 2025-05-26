@@ -62,7 +62,7 @@ export default function SignIn() {
                         {error && <div className="text-red-500 text-sm mt-2">{error}</div>}
                         <button type="submit" className="mt-8 w-full text-white bg-blue-800 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Login</button>
                         <p className="mt-4 text-center text-sm text-gray-600">
-                            Don't have an account?{" "}
+                            Don&apos;t have an account?
                             <Link href="/signup" className="text-blue-800 underline">
                                 Register
                             </Link>

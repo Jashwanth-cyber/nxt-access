@@ -1,7 +1,7 @@
 "use client";
 import Navbar from "../components/Navbar";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import Image from "next/image";
 
 export default function Dashboard() {

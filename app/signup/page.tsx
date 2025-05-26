@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function SignUp() {
     const [showPassword, setShowPassword] = useState(false);
-    const [signedUp, setSignedUp] = useState(false);
+    // const [signedUp, setSignedUp] = useState(false);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -19,7 +19,7 @@ export default function SignUp() {
             body: JSON.stringify({ username, password }),
         });
         if (res.ok) {
-            setSignedUp(true);
+            // setSignedUp(true);
             alert("Signup successful! You can now log in.");
         } else {
             const data = await res.json();
@@ -63,7 +63,7 @@ export default function SignUp() {
 
                             <button type="submit" className="mt-8 w-full text-white bg-blue-800 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Register Now</button>
                             <p className="mt-4 text-center text-sm text-gray-600">
-                                Already have an account?{" "}
+                                Already have an account?
                                 <Link href="/signin" className="text-blue-800 underline">
                                     Login
                                 </Link>
