@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function SignUp() {
     const [showPassword, setShowPassword] = useState(false);
@@ -32,7 +33,7 @@ export default function SignUp() {
                 <form onSubmit={handleSubmit} className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow">
                     <div>
                         <div className="px-16 py-3">
-                            <img src="https://res.cloudinary.com/dxjna0dxi/image/upload/v1747804762/Screenshot_2025-05-21_104616_tcsbrz.png" />
+                            <Image src="https://res.cloudinary.com/dxjna0dxi/image/upload/v1747804762/Screenshot_2025-05-21_104616_tcsbrz.png" alt="Login Image" width={500} height={300} />
                         </div>
                         <div className="pt-2">
                             <LabelledInput

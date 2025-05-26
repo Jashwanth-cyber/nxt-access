@@ -2,6 +2,7 @@
 import Navbar from "../components/Navbar";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import Image from "next/image";
 
 export default function Dashboard() {
   const router = useRouter();
@@ -24,7 +25,7 @@ export default function Dashboard() {
       <Navbar />
       <div className="p-4 flex justify-center items-center min-h-[80vh] bg-white">
         <div className="flex flex-col md:flex-row md:gap-15 gap-8 items-center w-full max-w-5xl">
-          <img
+          <Image
             src="https://res.cloudinary.com/dxjna0dxi/image/upload/v1747810411/Group_uu3k2r.png"
             alt="Assessment Illustration"
             className="w-75 max-w-xs md:max-w-md md:w-96"
