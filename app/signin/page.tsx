@@ -67,7 +67,15 @@ export default function SignIn() {
     );
 }
 
-function LabelledInput({ label, placeholder, type, value, onChange }: any) {
+type LabelledInputProps = {
+    label: string;
+    placeholder?: string;
+    type?: string;
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+function LabelledInput({ label, placeholder, type, value, onChange }: LabelledInputProps) {
     return <div>
         <label className="block mb-2 text-sm text-gray-500 font-semibold pt-4">{label}</label>
         <input

@@ -13,11 +13,7 @@ export default function ExamPage() {
     const [answers, setAnswers] = useState(Array(QUESTIONS.length).fill(null));
     const router = useRouter();
     
-    if (status === "loading") return <div>Loading...</div>;
-    if (!session) {
-     signIn(); // Redirects to sign in page
-     return null;
-    }
+    
     
     useEffect(() => {
         if (timeLeft <= 0) {
@@ -27,6 +23,12 @@ export default function ExamPage() {
         const timer = setInterval(() => setTimeLeft(t => t - 1), 1000);
         return () => clearInterval(timer);
     }, [timeLeft, router]);
+
+    if (status === "loading") return <div>Loading...</div>;
+    if (!session) {
+     signIn(); 
+     return null;
+    }
 
     const formatTime = (s: number) => {
         const m = Math.floor(s / 60).toString().padStart(2, "0");
