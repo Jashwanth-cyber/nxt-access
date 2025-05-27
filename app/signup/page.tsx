@@ -5,8 +5,8 @@ import Image from "next/image";
 
 export default function SignUp() {
     const [showPassword, setShowPassword] = useState(false);
-    // const [signedUp, setSignedUp] = useState(false);
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
@@ -16,14 +16,14 @@ export default function SignUp() {
         const res = await fetch("/api/signup", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username, password }),
+            body: JSON.stringify({ email, name, password }),
         });
         if (res.ok) {
-            // setSignedUp(true);
             alert("Signup successful! You can now log in.");
         } else {
-            const data = await res.json();
-            setError(data.error || "Signup failed");
+            let data = null;
+            try { data = await res.json(); } catch {}
+            setError(data?.error || "Signup failed");
         }
     };
 
@@ -37,10 +37,16 @@ export default function SignUp() {
                         </div>
                         <div className="pt-2">
                             <LabelledInput
-                                label="USERNAME"
+                                label="EMAIL"
                                 placeholder="xyz@gmail.com"
-                                value={username}
-                                onChange={e => setUsername(e.target.value)}
+                                value={email}
+                                onChange={e => setEmail(e.target.value)}
+                            />
+                            <LabelledInput
+                                label="NAME"
+                                placeholder="Your Name"
+                                value={name}
+                                onChange={e => setName(e.target.value)}
                             />
                             <LabelledInput
                                 label="PASSWORD"
@@ -75,7 +81,6 @@ export default function SignUp() {
         </div>
     );
 }
-
 
 interface LabelledInputType {
     label: string;

@@ -1,20 +1,25 @@
 "use client";
 import Navbar from "../components/Navbar";
-import { useRouter } from "next/navigation";
+
 // import { useEffect } from "react";
 import Image from "next/image";
+import { useSession, signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function Dashboard() {
+  const { data: session, status } = useSession();
   const router = useRouter();
 
+  if (status === "loading") return <div>Loading...</div>;
+  if (!session) {
+    signIn(); // Redirects to sign in page
+    return null;
+  }
+
   
-  // useEffect(() => {
-    
-  //   const isSignedIn = typeof window !== "undefined" && localStorage.getItem("signedIn") === "true";
-  //   if (!isSignedIn) {
-  //     router.replace("/signin");
-  //   }
-  // }, [router]);
+
+
+  
 
   const handleStartAssessment = () => {
     router.push("/exampage");
@@ -28,6 +33,8 @@ export default function Dashboard() {
           <Image
             src="https://res.cloudinary.com/dxjna0dxi/image/upload/v1747810411/Group_uu3k2r.png"
             alt="Assessment Illustration"
+            width={500}
+            height={300}
             className="w-75 max-w-xs md:max-w-md md:w-96"
           />
           <div className="border-2 border-blue-800 rounded-md p-4 md:p-8 bg-white shadow-md w-full max-w-md">

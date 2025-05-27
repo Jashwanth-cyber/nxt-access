@@ -3,16 +3,21 @@ import Navbar from "../components/Navbar";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { QUESTIONS } from "../components/Questions";
-
-
+import { useSession,signIn } from "next-auth/react";
 
 
 export default function ExamPage() {
+    const { data: session, status } = useSession();
     const [timeLeft, setTimeLeft] = useState(600);
     const [current, setCurrent] = useState(0);
     const [answers, setAnswers] = useState(Array(QUESTIONS.length).fill(null));
     const router = useRouter();
-
+    
+    if (status === "loading") return <div>Loading...</div>;
+    if (!session) {
+     signIn(); // Redirects to sign in page
+     return null;
+    }
     
     useEffect(() => {
         if (timeLeft <= 0) {
