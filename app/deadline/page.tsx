@@ -24,12 +24,15 @@ export default function Deadline() {
                     <h2 className="text-[#263868] font-bold text-2xl">
                         Your Score:<span> {score !== null ? score : "...."}</span>
                     </h2>
+                     <div className="flex gap-3 justify-between">
                     <button
                         className="p-2 bg-[#263868] text-white rounded-lg"
                         onClick={() => router.push("/exampage")}
                     >
                         Reattempt
                     </button>
+                    <button className="p-2 bg-[#263868] text-white rounded-lg">Review Questions</button>
+                    </div>
                 </div>
             </div>
         </>
